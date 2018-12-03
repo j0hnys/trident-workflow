@@ -45,7 +45,7 @@ return [
     'straight'   => [
         'type'          => 'workflow', // or 'state_machine'
         'marking_store' => [
-            'type'      => 'multiple_state',
+            'type'      => 'single_state',
             'arguments' => ['currentPlace']
         ],
         'supports'      => ['App\BlogPost'],
@@ -105,18 +105,7 @@ $transitions = $workflow->getEnabledTransitions($post);
 $workflow->apply($post, 'to_review');
 $post->save(); // Don't forget to persist the state
 
-// Using the WorkflowTrait
-$post->workflow_can('publish'); // True
-$post->workflow_can('to_review'); // False
 
-// Get the post transitions
-foreach ($post->workflow_transitions() as $transition) {
-    echo $transition->getName();
-}
-
-// Apply a transition
-$post->workflow_apply('publish');
-$post->save();
 ```
 
 ### Use the events
