@@ -3,6 +3,7 @@
 namespace J0hnys\TridentWorkflow;
 
 use Illuminate\Support\ServiceProvider;
+use J0hnys\TridentWorkflow\PackageProviders\Configuration;
 
 class WorkflowServiceProvider extends ServiceProvider
 {
@@ -39,8 +40,13 @@ class WorkflowServiceProvider extends ServiceProvider
         $this->commands($this->commands);
 
         $this->app->singleton(
-            'workflow', function ($app) {
-                return new WorkflowRegistry($app['config']->get('workflow'));
+            'J0hnys\TridentWorkflow\PackageProviders\Configuration', function () {
+                return new Configuration();
+            }
+        );
+        $this->app->bind(
+            'J0hnys\TridentWorkflow\WorkflowRegistry', function ($workflow_name) {
+                return new WorkflowRegistry($workflow_name);
             }
         );
     }

@@ -3,6 +3,7 @@
 namespace J0hnys\TridentWorkflow;
 
 use J0hnys\TridentWorkflow\Events\WorkflowSubscriber;
+
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Workflow\Definition;
 use Symfony\Component\Workflow\DefinitionBuilder;
@@ -38,10 +39,12 @@ class WorkflowRegistry
      * @param  array $config
      * @throws \ReflectionException
      */
-    public function __construct(array $config)
+    public function __construct(string $workflow_name)
     {
         $this->registry = new Registry();
-        $this->config = $config;
+        $configuration = app()->make('J0hnys\TridentWorkflow\PackageProviders\Configuration'); 
+
+        $this->config = [ "$workflow_name" => $configuration->getWorkflow($workflow_name)];
         $this->dispatcher = new EventDispatcher();
 
         $subscriber = new WorkflowSubscriber();
@@ -100,9 +103,11 @@ class WorkflowRegistry
         $markingStore = $this->getMarkingStoreInstance($workflowData);
         $workflow = $this->getWorkflowInstance($name, $workflowData, $definition, $markingStore);
 
+        
         foreach ($workflowData['supports'] as $supportedClass) {
             $this->add($workflow, $supportedClass);
         }
+
     }
 
     /**
