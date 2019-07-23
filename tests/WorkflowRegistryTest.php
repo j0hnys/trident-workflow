@@ -2,7 +2,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Brexis\LaravelWorkflow\WorkflowRegistry;
+use J0hnys\TridentWorkflow\WorkflowRegistry;
 use ReflectionProperty;
 use Symfony\Component\Workflow\MarkingStore\MultipleStateMarkingStore;
 use Symfony\Component\Workflow\MarkingStore\SingleStateMarkingStore;

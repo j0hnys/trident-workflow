@@ -1,8 +1,8 @@
 <?php
 
-namespace Brexis\LaravelWorkflow;
+namespace J0hnys\TridentWorkflow;
 
-use Brexis\LaravelWorkflow\Events\WorkflowSubscriber;
+use J0hnys\TridentWorkflow\Events\WorkflowSubscriber;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Workflow\Definition;
 use Symfony\Component\Workflow\DefinitionBuilder;
@@ -15,9 +15,6 @@ use Symfony\Component\Workflow\SupportStrategy\ClassInstanceSupportStrategy;
 use Symfony\Component\Workflow\Transition;
 use Symfony\Component\Workflow\Workflow;
 
-/**
- * @author Boris Koumondji <brexis@yahoo.fr>
- */
 class WorkflowRegistry
 {
     /**

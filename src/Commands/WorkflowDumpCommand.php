@@ -1,6 +1,6 @@
 <?php
 
-namespace Brexis\LaravelWorkflow\Commands;
+namespace J0hnys\TridentWorkflow\Commands;
 
 use Config;
 use Exception;
@@ -10,9 +10,7 @@ use Symfony\Component\Workflow\Dumper\GraphvizDumper;
 use Symfony\Component\Workflow\Workflow as SynfonyWorkflow;
 use Workflow;
 
-/**
- * @author Boris Koumondji <brexis@yahoo.fr>
- */
+
 class WorkflowDumpCommand extends Command
 {
     /**

@@ -1,10 +1,10 @@
-# Laravel workflow [![Build Status](https://travis-ci.org/brexis/laravel-workflow.svg?branch=1.1.2)](https://travis-ci.org/brexis/laravel-workflow)
+# Trident workflow (TBD) [![Build Status](https://travis-ci.org/j0hnys/trident-workflow.svg?branch=1.1.2)](https://travis-ci.org/j0hnys/trident-workflow)
 
 Use the Symfony Workflow component in Laravel
 
 ### Installation
 
-    composer require brexis/laravel-workflow
+    composer require j0hnys/trident-workflow
 
 #### For laravel <= 5.4
 
@@ -15,7 +15,7 @@ Add a ServiceProvider to your providers array in `config/app.php`:
 
 'providers' => [
     ...
-    Brexis\LaravelWorkflow\WorkflowServiceProvider::class,
+    J0hnys\TridentWorkflow\WorkflowServiceProvider::class,
 
 ]
 ```
@@ -25,7 +25,7 @@ Add the `Workflow` facade to your facades array:
 ```php
 <?php
     ...
-    'Workflow' => Brexis\LaravelWorkflow\Facades\WorkflowFacade::class,
+    'Workflow' => J0hnys\TridentWorkflow\Facades\WorkflowFacade::class,
 ```
 
 ### Configuration
@@ -33,7 +33,7 @@ Add the `Workflow` facade to your facades array:
 Publish the config file
 
 ```
-    php artisan vendor:publish --provider="Brexis\LaravelWorkflow\WorkflowServiceProvider"
+    php artisan vendor:publish --provider="J0hnys\TridentWorkflow\WorkflowServiceProvider"
 ```
 
 Configure your workflow in `config/workflow.php`
@@ -76,7 +76,7 @@ Use the `WorkflowTrait` inside supported classes
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Brexis\LaravelWorkflow\Traits\WorkflowTrait;
+use J0hnys\TridentWorkflow\Traits\WorkflowTrait;
 
 class BlogPost extends Model
 {
@@ -112,11 +112,11 @@ $post->save(); // Don't forget to persist the state
 This package provides a list of events fired during a transition
 
 ```php
-    Brexis\LaravelWorkflow\Events\Guard
-    Brexis\LaravelWorkflow\Events\Leave
-    Brexis\LaravelWorkflow\Events\Transition
-    Brexis\LaravelWorkflow\Events\Enter
-    Brexis\LaravelWorkflow\Events\Entered
+    J0hnys\TridentWorkflow\Events\Guard
+    J0hnys\TridentWorkflow\Events\Leave
+    J0hnys\TridentWorkflow\Events\Transition
+    J0hnys\TridentWorkflow\Events\Enter
+    J0hnys\TridentWorkflow\Events\Entered
 ```
 
 You can subscribe to an event
@@ -126,7 +126,7 @@ You can subscribe to an event
 
 namespace App\Listeners;
 
-use Brexis\LaravelWorkflow\Events\GuardEvent;
+use J0hnys\TridentWorkflow\Events\GuardEvent;
 
 class BlogPostWorkflowSubscriber
 {
@@ -175,27 +175,27 @@ class BlogPostWorkflowSubscriber
     public function subscribe($events)
     {
         $events->listen(
-            'Brexis\LaravelWorkflow\Events\GuardEvent',
+            'J0hnys\TridentWorkflow\Events\GuardEvent',
             'App\Listeners\BlogPostWorkflowSubscriber@onGuard'
         );
 
         $events->listen(
-            'Brexis\LaravelWorkflow\Events\LeaveEvent',
+            'J0hnys\TridentWorkflow\Events\LeaveEvent',
             'App\Listeners\BlogPostWorkflowSubscriber@onLeave'
         );
 
         $events->listen(
-            'Brexis\LaravelWorkflow\Events\TransitionEvent',
+            'J0hnys\TridentWorkflow\Events\TransitionEvent',
             'App\Listeners\BlogPostWorkflowSubscriber@onTransition'
         );
 
         $events->listen(
-            'Brexis\LaravelWorkflow\Events\EnterEvent',
+            'J0hnys\TridentWorkflow\Events\EnterEvent',
             'App\Listeners\BlogPostWorkflowSubscriber@onEnter'
         );
 
         $events->listen(
-            'Brexis\LaravelWorkflow\Events\EnteredEvent',
+            'J0hnys\TridentWorkflow\Events\EnteredEvent',
             'App\Listeners\BlogPostWorkflowSubscriber@onEntered'
         );
     }

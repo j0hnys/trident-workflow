@@ -1,12 +1,9 @@
 <?php
 
-namespace Brexis\LaravelWorkflow\Traits;
+namespace J0hnys\TridentWorkflow\Traits;
 
 use Workflow;
 
-/**
- * @author Boris Koumondji <brexis@yahoo.fr>
- */
 trait WorkflowTrait
 {
     public function workflow_apply($transition, $workflow = null)

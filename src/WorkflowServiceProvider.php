@@ -1,16 +1,13 @@
 <?php
 
-namespace Brexis\LaravelWorkflow;
+namespace J0hnys\TridentWorkflow;
 
 use Illuminate\Support\ServiceProvider;
 
-/**
- * @author Boris Koumondji <brexis@yahoo.fr>
- */
 class WorkflowServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        'Brexis\LaravelWorkflow\Commands\WorkflowDumpCommand',
+        'J0hnys\TridentWorkflow\Commands\WorkflowDumpCommand',
     ];
 
     /**

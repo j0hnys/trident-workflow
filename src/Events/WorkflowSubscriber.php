@@ -1,14 +1,11 @@
 <?php
 
-namespace Brexis\LaravelWorkflow\Events;
+namespace J0hnys\TridentWorkflow\Events;
 
 use Symfony\Component\Workflow\Event\Event;
 use Symfony\Component\Workflow\Event\GuardEvent as SymfonyGuardEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * @author Boris Koumondji <brexis@yahoo.fr>
- */
 class WorkflowSubscriber implements EventSubscriberInterface
 {
     public function guardEvent(SymfonyGuardEvent $event)

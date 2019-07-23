@@ -1,7 +1,7 @@
 {
-    "name": "j0hnys/laravel-workflow",
-    "description": "Integerate Symfony Workflow component into Laravel.",
-    "keywords": ["workflow", "symfony", "laravel", "laravel5"],
+    "name": "j0hnys/trident-workflow",
+    "description": "Integerate Symfony Workflow component into laravel Trident.",
+    "keywords": ["workflow", "symfony", "laravel", "laravel5", "trident"],
     "license": "MIT",
     "require": {
         "php": ">=5.5.9",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Brexis\\LaravelWorkflow\\": "src/"
+            "J0hnys\\TridentWorkflow\\": "src/"
         }
     },
     "autoload-dev": {
@@ -27,10 +27,10 @@
         },
         "laravel": {
             "providers": [
-                "Brexis\\LaravelWorkflow\\WorkflowServiceProvider"
+                "J0hnys\\TridentWorkflow\\WorkflowServiceProvider"
             ],
             "aliases": {
-                "Workflow": "Brexis\\LaravelWorkflow\\Facades\\WorkflowFacade"
+                "Workflow": "J0hnys\\TridentWorkflow\\Facades\\WorkflowFacade"
             }
         }
     },
