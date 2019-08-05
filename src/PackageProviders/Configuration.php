@@ -5,7 +5,7 @@ namespace J0hnys\TridentWorkflow\PackageProviders;
 
 class Configuration
 {
-    protected $configuration;
+    protected static $configuration;
 
     /**
      * @param  array $config
@@ -13,7 +13,7 @@ class Configuration
     public function __construct(array $config = null)
     {
         if (!empty($config)) {
-            $this->config = $config;
+            self::$configuration = $config;
         }
     }
 
@@ -23,7 +23,7 @@ class Configuration
      */
     public function getWorkflow(string $workflow_name): array
     {
-        return $this->configuration[ $workflow_name ];
+        return self::$configuration[ $workflow_name ];
     }
 
     /**
@@ -31,7 +31,7 @@ class Configuration
      */
     public function setWorkflow(string $workflow_name, array $workflow_configuration)
     {
-        $this->configuration[ $workflow_name ] = $workflow_configuration;
+        self::$configuration[ $workflow_name ] = $workflow_configuration;
     }
 
 }
