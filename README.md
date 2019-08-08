@@ -1,24 +1,10 @@
-# Trident workflow (TBD) [![Build Status](https://travis-ci.org/j0hnys/trident-workflow.svg?branch=1.1.2)](https://travis-ci.org/j0hnys/trident-workflow)
+# Trident workflow
 
-Use the Symfony Workflow component in Laravel
+Use the Symfony Workflow component in Laravel.
 
 ### Installation
 
     composer require j0hnys/trident-workflow
-
-#### For laravel <= 5.4
-
-Add a ServiceProvider to your providers array in `config/app.php`:
-
-```php
-<?php
-
-'providers' => [
-    ...
-    J0hnys\TridentWorkflow\WorkflowServiceProvider::class,
-
-]
-```
 
 Add the `Workflow` facade to your facades array:
 
@@ -43,7 +29,7 @@ Configure your workflow in `config/workflow.php`
 
 return [
     'straight'   => [
-        'type'          => 'workflow', // or 'state_machine'
+        'type'          => 'workflow',
         'marking_store' => [
             'type'      => 'single_state',
             'arguments' => ['currentPlace']
@@ -90,12 +76,17 @@ class BlogPost extends Model
 <?php
 
 use App\BlogPost;
-use Workflow;
+use J0hnys\TridentWorkflow\WorkflowRegistry;
+
+$workflow_name = 'straight';
+$configuration = config('workflow')[$workflow_name];
+
+$workflow_configuration = app()->make('J0hnys\TridentWorkflow\PackageProviders\Configuration');
+$workflow_configuration->setWorkflow($workflow_name, $configuration);
+$workflow_registry = new WorkflowRegistry($workflow_name);
 
 $post = BlogPost::find(1);
-$workflow = Workflow::get($post);
-// if more than one workflow is defined for the BlogPost class
-$workflow = Workflow::get($post, $workflowName);
+$workflow = $workflow_registry->get($post);
 
 $workflow->can($post, 'publish'); // False
 $workflow->can($post, 'to_review'); // True
