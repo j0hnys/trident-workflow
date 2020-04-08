@@ -4,10 +4,10 @@
     "keywords": ["workflow", "symfony", "laravel", "laravel5", "trident"],
     "license": "MIT",
     "require": {
-        "php": ">=5.5.9",
-        "symfony/workflow": "^3.3 || ^4.0",
-        "symfony/process": "^3.3 || ^4.0",
-        "symfony/event-dispatcher": "^3.3 || ^4.0",
+        "php": ">=7.0",
+        "symfony/workflow": "^4.0",
+        "symfony/process": "^5.0",
+        "symfony/event-dispatcher": "^5.0",
         "illuminate/console": "^7.0",
         "illuminate/support": "^7.0"
     },
@@ -22,9 +22,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
             "providers": [
                 "J0hnys\\TridentWorkflow\\WorkflowServiceProvider"
@@ -36,6 +33,6 @@
     },
     "require-dev": {
         "mockery/mockery": "^0.9.8",
-        "phpunit/phpunit": "^6.0 || ~7.0"
+        "phpunit/phpunit": "^8.0"
     }
 }
